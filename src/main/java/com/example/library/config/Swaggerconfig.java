@@ -1,4 +1,4 @@
-package com.example.library.config;
+package com.example.haoqi.config;
 
 
 import org.springframework.context.annotation.Bean;
