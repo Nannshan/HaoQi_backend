@@ -1,4 +1,4 @@
-package com.example.haoqi;
+/*package com.example.haoqi;
 
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -17,4 +17,4 @@ public class HaoQiApplication {
     public PaginationInnerInterceptor paginationInnerInterceptor(){
         return new PaginationInnerInterceptor();
     }
-}
+}*/

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="HaoQi_backend" />
         <module name="haoqi-backend" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="HaoQi_backend" options="-parameters" />
       <module name="backend" options="-parameters" />
       <module name="haoqi-backend" options="-parameters" />
       <module name="library-backend" options="-parameters" />
