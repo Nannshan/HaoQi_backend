@@ -1,4 +1,5 @@
-package com.example.haoqi.Controller.managercontroller;
+/*
+package com.example.haoqi.library.Controller.managercontroller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.haoqi.entity.Book;
@@ -64,3 +65,4 @@ public class BookController {
         }
     }
 }
+*/
