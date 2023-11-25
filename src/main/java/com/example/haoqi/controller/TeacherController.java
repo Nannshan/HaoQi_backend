@@ -1,6 +1,4 @@
 package com.example.haoqi.controller;
-
-import com.example.haoqi.entity.Book;
 import com.example.haoqi.entity.Teacher;
 import com.example.haoqi.mapper.TeacherMapper;
 import com.example.haoqi.utils.Result;
