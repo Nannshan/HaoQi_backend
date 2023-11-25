@@ -20,8 +20,6 @@ public class TeacherController {
     @PostMapping("/addTeacher")
     public Result addTeacher(/*@RequestBody*/ Teacher teacher){
         try{
-            // 设置初始的剩余数量(一开始剩余数量等于馆藏数量)
-
             teacherMapper.insert(teacher);
             return Result.ok().data("info", "插入成功");
         }catch (DuplicateKeyException e){
@@ -57,9 +55,5 @@ public class TeacherController {
             return Result.error().data("info", "参数错误");
         }
     }
-
-
-
-
 
 }

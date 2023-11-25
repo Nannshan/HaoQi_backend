@@ -1,7 +1,13 @@
 package com.example.haoqi.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("questionnaire")
 public class Questionnaire {
-    private int id;
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer id;
     private int executorid;//执行人id
     private int studentid;//学生id
     private int rating;
@@ -20,11 +26,11 @@ public class Questionnaire {
                 '}';
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,7 +74,7 @@ public class Questionnaire {
         this.suggestion = suggestion;
     }
 
-    public Questionnaire(int id, int executorid, int studentid, int rating, String coursename, String suggestion) {
+    public Questionnaire(Integer id, int executorid, int studentid, int rating, String coursename, String suggestion) {
         this.id = id;
         this.executorid = executorid;
         this.studentid = studentid;
