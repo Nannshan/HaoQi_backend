@@ -21,10 +21,10 @@ public class SignController {
 
         try {
             List<Sign> signs = signmapper.select();
-            return Result.ok().data("signs", signs);
+            return Result.ok().data(signs);
         }catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误");
+            return Result.error().data("参数错误");
         }
     }
     @PostMapping("/updatesign")

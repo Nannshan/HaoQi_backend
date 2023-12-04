@@ -19,11 +19,11 @@ public class QuestionnaireController {
     @Autowired
     private QuestionnaireMapper questionnaireMapper;
 
-    //添加课后调查
+    //添加问卷
     @PostMapping("/addQuestionnaire")
-    public Result addQuestionnaire(Questionnaire qe){
+    public Result addQuestionnaire(Questionnaire qe,Integer usesrid){
         try{
-            questionnaireMapper.insert(qe);
+            questionnaireMapper.add(qe.getCoursename(),usesrid,qe.getRating(),qe.getSuggestion(),1);
             return Result.ok().setMessage("提交成功");
         }
         catch (Exception e){
@@ -31,7 +31,7 @@ public class QuestionnaireController {
             return Result.error().setMessage( "参数错误，请重试");
         }
     }
-    //删除课后调查
+    //删除问卷
     @DeleteMapping("/deleteQuestionnaire")
     public ResponseEntity<String> deleteTeacher(int id) {
         int rows = questionnaireMapper.deleteById(id);
@@ -43,7 +43,7 @@ public class QuestionnaireController {
     }
 
     /*
-    * 查询课后调查
+    * 查询问卷
     *  条件：
     *  课程名
     */

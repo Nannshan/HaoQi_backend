@@ -35,7 +35,7 @@ public class ApplicationController {
         CourseController ca = new CourseController();
         try{
             applicationMapper.updateById(application);
-            ca.addCourse(course);
+            //ca.addCourse(course);
             return Result.ok().setMessage( "提交成功");
         }
         catch (Exception e){
