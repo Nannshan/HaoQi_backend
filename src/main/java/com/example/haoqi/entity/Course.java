@@ -1,8 +1,12 @@
 package com.example.haoqi.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.util.Date;
 
 public class Course {
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;
     private Date date;
@@ -21,6 +25,9 @@ public class Course {
         this.price = price;
         this.executorid = executorid;
         this.teacherid = teacherid;
+    }
+    public Course () {
+
     }
 
     @Override

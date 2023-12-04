@@ -20,8 +20,9 @@ public class TeacherController {
     @PostMapping("/addTeacher")
     public Result addTeacher(/*@RequestBody*/ Teacher teacher){
         try{
-            teacherMapper.insert(teacher);
-            return Result.ok().data("插入成功");
+            teacherMapper.add(teacher.getName(),teacher.getTitle(),teacher.getSkills(),teacher.getPhone(),teacher.getEmail());
+            return Result.ok().setMessage("插入成功");
+
         }catch (DuplicateKeyException e){
             System.out.println(e);
             return  Result.error().data( "id号已存在");

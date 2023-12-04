@@ -50,13 +50,15 @@ public class QuestionnaireController {
     */
     @GetMapping("/searchQuestionnaire")
     public Result searchTeacher(Questionnaire questionnaire){
-        QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper() ;
+        QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper();
         queryWrapper.like("executorid",questionnaire.getExecutorid());
         queryWrapper.like("studentid",questionnaire.getStudentid());
         queryWrapper.like("coursename",questionnaire.getCoursename());
 
         try {
             List<Questionnaire> questionnaires = questionnaireMapper.selectList(queryWrapper);
+            //System.out.println("fdfsfs");
+            //System.out.println(questionnaires.isEmpty());
             return Result.ok().data(questionnaires);
         }catch (Exception e){
             System.out.println(e);

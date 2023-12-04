@@ -8,9 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface TeacherMapper extends BaseMapper<Teacher> {
-    @Insert("insert into teacher(id,name,title,skills,phone,email) " +
-            "values(#{id},#{name},#{title},#{skills},#{phone},#{email})")
-    public int add( int id ,String name,String title,String skills,String phone, String email );
+    @Insert("insert into teacher(name,title,skills,phone,email) " +
+            "values(#{name},#{title},#{skills},#{phone},#{email})")
+    public int add( String name,String title,String skills,String phone, String email );
     @Delete("DELETE FROM teacher WHERE id = #{id}")
     int deleteById(int id);
 
