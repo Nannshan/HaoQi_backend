@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface StudentMapper extends BaseMapper<Student> {
-    @Insert("insert into student(id,name,company,position,phone,email,level,courseid) " +
-            "values(#{id},#{name},#{company},#{position},#{phone},#{email},#{level},#{courseid}")
-    public int add( int id ,int courseid,String name,String company,String position,String phone, String email,String level );
+    @Insert("insert into student(name,company,position,phone,email,level,courseid) " +
+            "values(#{name},#{company},#{position},#{phone},#{email},#{level},#{courseid});")
+    public int add( int courseid,String name,String company,String position,String phone, String email,String level);
 }

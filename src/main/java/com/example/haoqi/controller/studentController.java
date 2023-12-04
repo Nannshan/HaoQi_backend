@@ -17,7 +17,7 @@ public class studentController {
     @PostMapping("/addstudent")
     public Result addStudent(Student student){
         try{
-            studentMapper.insert(student);
+            studentMapper.add(student.getCourseid(),student.getName(), student.getCompany(), student.getPosition(),student.getPhone(),student.getEmail(),student.getLevel());
             return Result.ok().data("info", "插入成功");
         }catch (DuplicateKeyException e){
             System.out.println(e);
