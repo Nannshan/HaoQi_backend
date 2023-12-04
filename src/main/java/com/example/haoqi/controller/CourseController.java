@@ -19,18 +19,6 @@ public class CourseController {
     private CourseMapper courseMapper;
 
     //添加课程,执行人id即为当前登录账号的执行人
-    @PostMapping("addCourse")
-    public Result addCourse(Course course){
-        try{
-            courseMapper.add(course.getName(),course.getDate(),course.getPosition(),
-                    course.getTeacherid(),1,course.getCourseinfo());
-            return Result.ok().data("提交申请成功");
-        }
-        catch (Exception e){
-            System.out.println(e);
-            return Result.error().data("参数错误，请重试");
-        }
-    }
     //更新课程
     //删除课程
     //查找课程
@@ -45,7 +33,6 @@ public class CourseController {
 
         }
         courseMapper.selectPage(coursePage, queryWrapper);
-
         return Result.ok().data(coursePage);
     }
 }

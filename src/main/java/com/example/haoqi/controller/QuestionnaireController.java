@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController()
 public class QuestionnaireController {
     @Autowired
@@ -42,23 +43,19 @@ public class QuestionnaireController {
     }
 
     /*
-    * TODO：查询课后调查
+    * 查询课后调查
     *  条件：
-    *  执行人id
-    *  学生id
     *  课程名
     */
     @GetMapping("/searchQuestionnaire")
-    public Result searchTeacher(Questionnaire questionnaire){
+    public Result searchTeacher(String coursename){
+        coursename = ""; //无条件查询所有课程
         QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper();
-        queryWrapper.like("executorid",questionnaire.getExecutorid());
-        queryWrapper.like("studentid",questionnaire.getStudentid());
-        queryWrapper.like("coursename",questionnaire.getCoursename());
+        if(!coursename.equals("")){
+        queryWrapper.like("coursename",coursename);}
 
         try {
             List<Questionnaire> questionnaires = questionnaireMapper.selectList(queryWrapper);
-            //System.out.println("fdfsfs");
-            //System.out.println(questionnaires.isEmpty());
             return Result.ok().data(questionnaires);
         }catch (Exception e){
             System.out.println(e);

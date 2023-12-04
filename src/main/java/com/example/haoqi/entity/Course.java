@@ -29,7 +29,6 @@ public class Course {
     public Course () {
 
     }
-
     @Override
     public String toString() {
         return "Course{" +
