@@ -23,11 +23,11 @@ public class QuestionnaireController {
     public Result addQuestionnaire(Questionnaire qe){
         try{
             questionnaireMapper.insert(qe);
-            return Result.ok().data("info","提交成功");
+            return Result.ok().setMessage("提交成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误，请重试");
+            return Result.error().setMessage( "参数错误，请重试");
         }
     }
     //删除课后调查
@@ -50,17 +50,19 @@ public class QuestionnaireController {
     */
     @GetMapping("/searchQuestionnaire")
     public Result searchTeacher(Questionnaire questionnaire){
-        QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper() ;
+        QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper();
         queryWrapper.like("executorid",questionnaire.getExecutorid());
         queryWrapper.like("studentid",questionnaire.getStudentid());
         queryWrapper.like("coursename",questionnaire.getCoursename());
 
         try {
             List<Questionnaire> questionnaires = questionnaireMapper.selectList(queryWrapper);
-            return Result.ok().data("questionnaires", questionnaires);
+            //System.out.println("fdfsfs");
+            //System.out.println(questionnaires.isEmpty());
+            return Result.ok().data(questionnaires);
         }catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误");
+            return Result.error().setMessage( "参数错误");
         }
     }
 

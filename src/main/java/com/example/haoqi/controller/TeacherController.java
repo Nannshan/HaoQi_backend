@@ -21,13 +21,14 @@ public class TeacherController {
     public Result addTeacher(/*@RequestBody*/ Teacher teacher){
         try{
             teacherMapper.add(teacher.getName(),teacher.getTitle(),teacher.getSkills(),teacher.getPhone(),teacher.getEmail());
-            return Result.ok().data("info", "插入成功");
+            return Result.ok().setMessage("插入成功");
+
         }catch (DuplicateKeyException e){
             System.out.println(e);
-            return  Result.error().data("info", "id号已存在");
+            return  Result.error().data( "id号已存在");
         }catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误，请重试");
+            return Result.error().data( "参数错误，请重试");
         }
     }
     @DeleteMapping("/deleteTeacher")
@@ -49,10 +50,10 @@ public class TeacherController {
 
         try {
             List<Teacher> teachers = teacherMapper.select();
-            return Result.ok().data("teachers", teachers);
+            return Result.ok().data( teachers);
         }catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误");
+            return Result.error().data("参数错误");
         }
     }
 

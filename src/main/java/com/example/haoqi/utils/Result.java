@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Result {
-    private Map<String, Object> data;
+    private Object data;
     private boolean success;
     private String message;
     private Integer code;
@@ -38,14 +38,12 @@ public class Result {
         return r;
     }
     // 设置数据
-    public Result data(String key, Object object){
-        Map<String, Object> resultData = new HashMap<>();
-        resultData.put(key, object);
-        this.setData(resultData);
+    public Result data(Object object){
+        this.setData(object);
         return this;
     }
-    public void setData(Map<String, Object> data){ this.data = data; }
-    public Map<String, Object> getData() {
+    public void setData(Object data){ this.data = data; }
+    public Object getData() {
         return data;
     }
 
@@ -61,8 +59,9 @@ public class Result {
         return message;
     }
 
-    public void setMessage(String message) {
+    public Result setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public Integer getCode() {

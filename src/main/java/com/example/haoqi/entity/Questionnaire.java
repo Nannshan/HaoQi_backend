@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("questionnaire")
 public class Questionnaire {
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Integer id;
-    private int executorid;//执行人id
-    private int studentid;//学生id
-    private int rating;
+    private Integer executorid;//执行人id
+    private Integer studentid;//学生id
+    private Integer rating;
     private String coursename;
     private String suggestion;
 
@@ -34,27 +34,27 @@ public class Questionnaire {
         this.id = id;
     }
 
-    public int getExecutorid() {
+    public Integer getExecutorid() {
         return executorid;
     }
 
-    public void setExecutorid(int executorid) {
+    public void setExecutorid(Integer executorid) {
         this.executorid = executorid;
     }
 
-    public int getStudentid() {
+    public Integer getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(int studentid) {
+    public void setStudentid(Integer studentid) {
         this.studentid = studentid;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -74,7 +74,7 @@ public class Questionnaire {
         this.suggestion = suggestion;
     }
 
-    public Questionnaire(Integer id, int executorid, int studentid, int rating, String coursename, String suggestion) {
+    public Questionnaire(Integer id, Integer executorid, Integer studentid, Integer rating, String coursename, String suggestion) {
         this.id = id;
         this.executorid = executorid;
         this.studentid = studentid;
