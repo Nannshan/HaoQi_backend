@@ -18,11 +18,11 @@ public class ApplicationController {
     public Result submitApplication(Application application){
         try{
             applicationMapper.add(application.getCourse().toString(),application.getCompanyname());
-            return Result.ok().data("info","提交申请成功");
+            return Result.ok().data("提交申请成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误，请重试");
+            return Result.error().data("参数错误，请重试");
         }
     }
 
@@ -36,11 +36,11 @@ public class ApplicationController {
         try{
             applicationMapper.updateById(application);
             ca.addCourse(course);
-            return Result.ok().data("info","提交申请成功");
+            return Result.ok().data("提交申请成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误，请重试");
+            return Result.error().data("参数错误，请重试");
         }
     }
 
@@ -49,11 +49,11 @@ public class ApplicationController {
         application.setFlag(2);
         try{
             applicationMapper.updateById(application);
-            return Result.ok().data("info","拒绝申请成功");
+            return Result.ok().data("拒绝申请成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("info", "参数错误，请重试");
+            return Result.error().data("参数错误，请重试");
         }
     }
     //修改申请
