@@ -6,18 +6,21 @@ import com.example.haoqi.mapper.ApplicationMapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
+@RequestMapping("/application")
 public class ApplicationController {
     @Autowired
     private ApplicationMapper applicationMapper;
 
     //提交申请
     @PostMapping("/submitApplication")
-    public Result submitApplication(Application application){
+    public Result submitApplication(@RequestBody Application application){
         try{
-            applicationMapper.add(application.getCourse().toString(),application.getCompanyname());
+            applicationMapper.insert(application);
             return Result.ok().setMessage( "提交成功");
         }
         catch (Exception e){

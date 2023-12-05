@@ -17,7 +17,6 @@ public class CourseController {
     //添加课程,执行人id即为当前登录账号的执行人
     @PostMapping("/addCourse")
     public Result addCourse(@RequestBody Course course){
-        System.out.println(course);
         try{
             int insert = courseMapper.insert(course);
             if(insert>0) return Result.ok().setMessage("新增成功");
@@ -34,11 +33,12 @@ public class CourseController {
         Page<Course> coursePage = new Page<>(page, pageSize);
 
         if (courseName != null) {
+            System.out.println(courseName);
             queryWrapper.like("name", courseName);
             courseMapper.selectPage(coursePage, queryWrapper);
-
+        }else{
+            courseMapper.selectPage(coursePage, queryWrapper);
         }
-        courseMapper.selectPage(coursePage, queryWrapper);
         return Result.ok().data(coursePage);
     }
 
@@ -53,7 +53,6 @@ public class CourseController {
 
     @PostMapping("/update")
     public Result update(@RequestBody Course course){
-        System.out.println(course);
         try{
             courseMapper.updateById(course);
             return Result.ok().setMessage("更新成功");

@@ -13,51 +13,22 @@ public class Student {
     private String email;
     private String phone;
     private String position;
+    private String level;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", company='" + company + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", position='" + position + '\'' +
-                ", level='" + level + '\'' +
-                ", courseid=" + courseid +
-                '}';
+    public int getId() {
+        return id;
     }
 
-    public int getCourseid() {
-        return courseid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCourseid(int courseid) {
-        this.courseid = courseid;
+    public String getName() {
+        return name;
     }
 
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompany() {
@@ -76,23 +47,40 @@ public class Student {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public int getId() {
-        return id;
+    public String getPosition() {
+        return position;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    private String level;
-    private  int courseid;
+    public String getLevel() {
+        return level;
+    }
 
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", position='" + position + '\'' +
+                ", level='" + level + '\'' +
+                '}';
+    }
 }

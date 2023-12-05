@@ -14,8 +14,14 @@ public class Teacher {
     private String phone;
     private String email;
 
-
-
+    public Teacher(int id, String name, String title, String skills, String phone, String email) {
+        this.id = id;
+        this.name = name;
+        this.title = title;
+        this.skills = skills;
+        this.phone = phone;
+        this.email = email;
+    }
 
     public String getEmail() {
         return email;
@@ -63,5 +69,17 @@ public class Teacher {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", skills='" + skills + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
