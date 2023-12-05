@@ -3,29 +3,41 @@ package com.example.haoqi.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import net.bytebuddy.dynamic.DynamicType;
+
+import javax.annotation.Generated;
 
 @TableName("application")
 public class Application {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Course course;
+    private String coursename;
     private String companyname;
+    private String position;
+    private Double price;
+    private Integer teacherid;
     private Integer flag = 0;
 
     @Override
     public String toString() {
         return "Application{" +
                 "id=" + id +
-                ", course=" + course.toString() +
+                ", coursename='" + coursename + '\'' +
                 ", companyname='" + companyname + '\'' +
+                ", position='" + position + '\'' +
+                ", price=" + price +
+                ", teacherid=" + teacherid +
+                ", flag=" + flag +
                 '}';
     }
 
-    public Application(Integer id, Course course, String companyname) {
+    public Application(Integer id, String coursename, String companyname, String position, Double price, Integer teacherid, Integer flag) {
         this.id = id;
-        this.course = course;
+        this.coursename = coursename;
         this.companyname = companyname;
+        this.position = position;
+        this.price = price;
+        this.teacherid = teacherid;
+        this.flag = flag;
     }
 
     public Integer getId() {
@@ -36,20 +48,12 @@ public class Application {
         this.id = id;
     }
 
-    public Integer getFlag() {
-        return flag;
+    public String getCoursename() {
+        return coursename;
     }
 
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
     }
 
     public String getCompanyname() {
@@ -58,5 +62,37 @@ public class Application {
 
     public void setCompanyname(String companyname) {
         this.companyname = companyname;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(Integer teacherid) {
+        this.teacherid = teacherid;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

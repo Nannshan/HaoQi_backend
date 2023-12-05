@@ -7,7 +7,4 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface QuestionnaireMapper extends BaseMapper<Questionnaire> {
-    @Insert("insert into questionnaire(coursename,studentid,rating,suggestion,executorid) " +
-            "values(#{name},#{studentid},#{rating},#{suggestion},#{executorid})")
-    public int add( String name ,Integer studentid ,Integer rating, String suggestion,Integer executorid );
 }

@@ -13,21 +13,18 @@ public class Course {
     private String position;
     private String courseinfo;
     private Float price;
-    private Integer executorid;
     private Integer teacherid;
 
-    public Course(Integer id, String name, Date date, String position, String courseinfo, Float price, Integer executorid, Integer teacherid) {
+    public Course(Integer id, String name, Date date, String position, String courseinfo, Float price,  Integer teacherid) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.position = position;
         this.courseinfo = courseinfo;
         this.price = price;
-        this.executorid = executorid;
         this.teacherid = teacherid;
     }
     public Course () {
-
     }
     @Override
     public String toString() {
@@ -38,7 +35,17 @@ public class Course {
                 ", position='" + position + '\'' +
                 ", courseinfo='" + courseinfo + '\'' +
                 ", price=" + price +
-                ", executorid=" + executorid +
+                ", teacherid=" + teacherid +
+                '}';
+    }
+
+    public String applicationtoString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                ", position='" + position + '\'' +
+                ", courseinfo='" + courseinfo + '\'' +
+                ", price=" + price +
                 ", teacherid=" + teacherid +
                 '}';
     }
@@ -97,13 +104,5 @@ public class Course {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public Integer getExecutorid() {
-        return executorid;
-    }
-
-    public void setExecutorid(Integer executorid) {
-        this.executorid = executorid;
     }
 }

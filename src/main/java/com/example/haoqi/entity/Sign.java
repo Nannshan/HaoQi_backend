@@ -1,12 +1,18 @@
 package com.example.haoqi.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 public class Sign {
     @TableId(type = IdType.AUTO)
     private int id;
     private int courseid;
+
+    @TableField(exist = false)
+    private String courseName;
+    @TableField(exist = false)
+    private String studentName;
     private int studentid;
     private int paid;
 
@@ -17,17 +23,9 @@ public class Sign {
                 ", courseid=" + courseid +
                 ", studentid=" + studentid +
                 ", paid=" + paid +
-                ", companyname='" + companyname + '\'' +
                 '}';
     }
 
-    public String getCompanyname() {
-        return companyname;
-    }
-
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname;
-    }
 
     public int getPaid() {
         return paid;
@@ -61,6 +59,19 @@ public class Sign {
         this.id = id;
     }
 
-    private String companyname;
+    public String getCourseName() {
+        return courseName;
+    }
 
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
 }

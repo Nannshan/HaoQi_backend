@@ -7,18 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-public class studentController {
+@RequestMapping("/student")
+public class StudentController {
     @Autowired
     private StudentMapper studentMapper;
 
-    @PostMapping("/addstudent")
-    public Result addStudent(Student student){
+    @PostMapping("/add")
+    public Result addStudent(@RequestBody  Student student){
         try{
-
-            studentMapper.add(student.getCourseid(),student.getName(), student.getCompany(), student.getPosition(),student.getPhone(),student.getEmail(),student.getLevel());
+            studentMapper.insert(student);
             return Result.ok().setMessage("插入成功");
         }catch (DuplicateKeyException e){
             System.out.println(e);
