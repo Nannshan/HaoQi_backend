@@ -14,4 +14,5 @@ public interface CourseMapper extends BaseMapper<Course> {
             "values(#{name},#{data},#{position},#{teacherid},#{executorid},#{courseinfo})")
     public int add(String name , Date date ,String position ,Integer teacherid, Integer executorid, String courseinfo);
 
+    void update(Course course);
 }

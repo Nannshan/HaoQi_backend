@@ -31,7 +31,6 @@ public class ApplicationController {
     public Result agreeApplication(Application application){
         application.setFlag(1);
         Course course = application.getCourse();
-        course.setExecutorid(1);
         CourseController ca = new CourseController();
         try{
             applicationMapper.updateById(application);
