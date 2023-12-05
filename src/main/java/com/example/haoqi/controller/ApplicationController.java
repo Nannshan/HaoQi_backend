@@ -57,5 +57,15 @@ public class ApplicationController {
             return Result.error().setMessage( "参数错误");
         }
     }
+    //查询申请
+    public Result searchApplication(){
+        try{
+            return Result.ok().setMessage( "查询成功");
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return Result.error().setMessage( "参数错误");
+        }
+    }
     //修改申请
 }
