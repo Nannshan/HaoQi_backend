@@ -18,15 +18,15 @@ public class ApplicationController {
     public Result submitApplication(Application application){
         try{
             applicationMapper.add(application.getCourse().toString(),application.getCompanyname());
-            return Result.ok().data("提交申请成功");
+            return Result.ok().setMessage( "提交成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("参数错误，请重试");
+            return Result.error().setMessage( "参数错误");
         }
     }
 
-    //同意申请,需要该行的信息的id
+    //同意申请,需要传入该行的信息
     @PostMapping("agreeApplication")
     public Result agreeApplication(Application application){
         application.setFlag(1);
@@ -34,25 +34,26 @@ public class ApplicationController {
         CourseController ca = new CourseController();
         try{
             applicationMapper.updateById(application);
-            ca.addCourse(course);
-            return Result.ok().data("提交申请成功");
+            //ca.addCourse(course);
+            return Result.ok().setMessage( "提交成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("参数错误，请重试");
+            return Result.error().setMessage( "参数错误");
         }
     }
 
     //拒绝申请
+    @PostMapping("refuseApplication")
     public Result refuseApplication(Application application){
         application.setFlag(2);
         try{
             applicationMapper.updateById(application);
-            return Result.ok().data("拒绝申请成功");
+            return Result.ok().setMessage( "拒绝申请成功");
         }
         catch (Exception e){
             System.out.println(e);
-            return Result.error().data("参数错误，请重试");
+            return Result.error().setMessage( "参数错误");
         }
     }
     //修改申请

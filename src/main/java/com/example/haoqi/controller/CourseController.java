@@ -39,7 +39,6 @@ public class CourseController {
 
         }
         courseMapper.selectPage(coursePage, queryWrapper);
-
         return Result.ok().data(coursePage);
     }
 
