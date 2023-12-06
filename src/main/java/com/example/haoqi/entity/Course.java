@@ -1,6 +1,7 @@
 package com.example.haoqi.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.util.Date;
@@ -15,6 +16,11 @@ public class Course {
     private Float price;
     private Integer teacherid;
     private Integer executorid;
+
+    private Integer evaluated;
+
+    @TableField(exist = false)
+    private String teacherName;
 
     public Course(Integer id, String name, Date date, String position, String courseinfo, Float price,  Integer teacherid, Integer executorid) {
         this.id = id;
@@ -114,5 +120,21 @@ public class Course {
 
     public void setExecutorid(Integer executorid) {
         this.executorid = executorid;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public Integer getEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(Integer evaluated) {
+        this.evaluated = evaluated;
     }
 }

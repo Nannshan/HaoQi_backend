@@ -2,7 +2,9 @@ package com.example.haoqi.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.haoqi.entity.Questionnaire;
+import com.example.haoqi.entity.Sign;
 import com.example.haoqi.mapper.QuestionnaireMapper;
+import com.example.haoqi.mapper.Signmapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +18,21 @@ import java.util.List;
 public class QuestionnaireController {
     @Autowired
     private QuestionnaireMapper questionnaireMapper;
+    @Autowired
+    private Signmapper signmapper;
 
     //添加问卷
     @PostMapping("/add")
     public Result addQuestionnaire(@RequestBody Questionnaire qe){
         try{
+            System.out.println(qe);
             questionnaireMapper.insert(qe);
+            // 对应的选课记录状态设置为已评价
+            Integer studentId = qe.getStudentid();
+            Integer courseId = qe.getCourseid();
+            Sign sign = signmapper.queryById(studentId, courseId);
+            sign.setEvaluated(1);
+            signmapper.updateById(sign);
             return Result.ok().setMessage("提交成功");
         }
         catch (Exception e){
@@ -31,12 +42,12 @@ public class QuestionnaireController {
     }
     //删除问卷
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteTeacher(int id) {
+    public Result deleteTeacher(int id) {
         int rows = questionnaireMapper.deleteById(id);
         if (rows > 0) {
-            return ResponseEntity.ok("删除成功");
+            return Result.ok().setMessage("删除成功");
         } else {
-            return ResponseEntity.ok("删除失败");
+            return Result.error().setMessage("删除失败");
         }
     }
 

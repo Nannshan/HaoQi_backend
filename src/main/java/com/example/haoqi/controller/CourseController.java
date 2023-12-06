@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.haoqi.entity.Course;
 import com.example.haoqi.mapper.CourseMapper;
+import com.example.haoqi.mapper.Signmapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class CourseController {
     @Autowired
     private CourseMapper courseMapper;
+    @Autowired
+    private Signmapper signmapper;
 
     //添加课程
     //更新课程
@@ -78,6 +81,22 @@ public class CourseController {
         }catch (Exception e){
             System.out.println(e);
             return Result.error().setMessage("删除失败");
+        }
+    }
+
+    @PutMapping("/changeEvaluatedState")
+    public Result changeEvaluatedState(Integer courseId, Integer status){
+        try{
+            Course course = courseMapper.selectById(courseId);
+            course.setEvaluated(status);
+            courseMapper.updateById(course);
+            // 暂时只支持开放操作
+            signmapper.changeEvaluatedState(courseId, 0);
+
+            return Result.ok().setMessage("更新成功");
+        }catch (Exception e){
+            System.out.println(e);
+            return Result.error().setMessage("更改失败");
         }
     }
 }

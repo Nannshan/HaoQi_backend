@@ -85,4 +85,17 @@ public class Questionnaire {
     public void setCourseid(Integer courseid) {
         this.courseid = courseid;
     }
+
+    @Override
+    public String toString() {
+        return "Questionnaire{" +
+                "id=" + id +
+                ", studentid=" + studentid +
+                ", courseid=" + courseid +
+                ", rating=" + rating +
+                ", coursename='" + coursename + '\'' +
+                ", studentname='" + studentname + '\'' +
+                ", suggestion='" + suggestion + '\'' +
+                '}';
+    }
 }
