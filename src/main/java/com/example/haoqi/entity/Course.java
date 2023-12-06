@@ -25,13 +25,23 @@ public class Course {
         this.teacherid = teacherid;
     }
     public Course () {
-
     }
     @Override
     public String toString() {
         return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", date=" + date +
+                ", position='" + position + '\'' +
+                ", courseinfo='" + courseinfo + '\'' +
+                ", price=" + price +
+                ", teacherid=" + teacherid +
+                '}';
+    }
+
+    public String applicationtoString() {
+        return "Course{" +
+                "name='" + name + '\'' +
                 ", date=" + date +
                 ", position='" + position + '\'' +
                 ", courseinfo='" + courseinfo + '\'' +

@@ -14,6 +14,11 @@ public class CourseController {
     @Autowired
     private CourseMapper courseMapper;
 
+    //添加课程
+    //更新课程
+    //删除课程
+    //查找课程
+
     //添加课程,执行人id即为当前登录账号的执行人
     @PostMapping("/addCourse")
     public Result addCourse(@RequestBody Course course){

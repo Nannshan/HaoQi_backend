@@ -11,6 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface QuestionnaireMapper extends BaseMapper<Questionnaire> {
+<<<<<<< HEAD
     @Select("select questionnaire.* , course.name as coursename, student.name as studentname from questionnaire, course, student " +
             "where questionnaire.courseid = course.id and questionnaire.studentid = student.id and course.name like CONCAT('%', #{courseName}, '%');")
     List<Questionnaire> query(String courseName);
@@ -20,4 +21,6 @@ public interface QuestionnaireMapper extends BaseMapper<Questionnaire> {
     List<Questionnaire> queryDetail(Integer id);
 
 
+=======
+>>>>>>> 3afa36de68a3df8fdb3eb1460c5ead88d6bc8fbf
 }

@@ -14,6 +14,15 @@ public class Student {
     private String phone;
     private String position;
     private String level;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getId() {
         return id;
