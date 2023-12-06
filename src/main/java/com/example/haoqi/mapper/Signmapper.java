@@ -19,5 +19,8 @@ public interface Signmapper extends BaseMapper<Sign> {
             " where sign.studentid = student.id and sign.courseid = course.id" +
             " and sign.id = #{id}")
     Sign queryDetail(Integer id);
+
+    @Select("select sum(course.price) from sign, course where sign.courseid = course.id and sign.paid = \"1\";")
+    Double getTotalMoney();
 }
 

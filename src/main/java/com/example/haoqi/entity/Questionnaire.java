@@ -11,7 +11,6 @@ public class Questionnaire {
     @TableId(type = IdType.AUTO)
     private Integer id;
     private Integer studentid;//学生id
-
     private Integer courseid;
     private Integer rating;
     @TableField(exist = false)
