@@ -29,7 +29,7 @@ public class ApplicationController {
 
     //处理申请
     @PostMapping("change")
-    public Result agreeApplication(int id, int status) {
+    public Result agreeApplication(@RequestParam("id") int id, @RequestParam("status") int status) {
         Application application ;
         //根据id拿到对象
         application = applicationMapper.selectById(id);

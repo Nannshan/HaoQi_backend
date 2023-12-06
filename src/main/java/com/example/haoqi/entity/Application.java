@@ -4,40 +4,29 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import javax.annotation.Generated;
 
 @TableName("application")
 public class Application {
     @TableId(type = IdType.AUTO)
     private Integer id;
+    private String phone;
     private String coursename;
     private String companyname;
     private String position;
     private Double price;
-    private Integer teacherid;
     private Integer flag = 0;
 
-    @Override
-    public String toString() {
-        return "Application{" +
-                "id=" + id +
-                ", coursename='" + coursename + '\'' +
-                ", companyname='" + companyname + '\'' +
-                ", position='" + position + '\'' +
-                ", price=" + price +
-                ", teacherid=" + teacherid +
-                ", flag=" + flag +
-                '}';
-    }
+    private Integer executorid;
 
-    public Application(Integer id, String coursename, String companyname, String position, Double price, Integer teacherid, Integer flag) {
+    public Application(Integer id, String phone, String coursename, String companyname, String position, Double price, Integer flag, Integer executorid) {
         this.id = id;
+        this.phone = phone;
         this.coursename = coursename;
         this.companyname = companyname;
         this.position = position;
         this.price = price;
-        this.teacherid = teacherid;
         this.flag = flag;
+        this.executorid = executorid;
     }
 
     public Integer getId() {
@@ -80,19 +69,40 @@ public class Application {
         this.price = price;
     }
 
-    public Integer getTeacherid() {
-        return teacherid;
-    }
-
-    public void setTeacherid(Integer teacherid) {
-        this.teacherid = teacherid;
-    }
-
     public Integer getFlag() {
         return flag;
     }
 
     public void setFlag(Integer flag) {
         this.flag = flag;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Application{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", coursename='" + coursename + '\'' +
+                ", companyname='" + companyname + '\'' +
+                ", position='" + position + '\'' +
+                ", price=" + price +
+                ", flag=" + flag +
+                '}';
+    }
+
+    public Integer getExecutorid() {
+        return executorid;
+    }
+
+    public void setExecutorid(Integer executorid) {
+        this.executorid = executorid;
     }
 }

@@ -3,7 +3,6 @@ package com.example.haoqi.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.haoqi.entity.Student;
-import com.example.haoqi.entity.Teacher;
 import com.example.haoqi.mapper.StudentMapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,16 @@ public class StudentController {
            studentMapper.selectPage(studentPage,null);
         }
         return Result.ok().data(studentPage);
+    }
+
+    @GetMapping("/queryDetail")
+    public Result queryDetail(Integer id){
+            try{
+                return Result.ok().data(studentMapper.selectById(id));
+            }catch (Exception e){
+                System.out.println(e);
+                return Result.error().setMessage("查询失败");
+            }
     }
     @PostMapping("/login")
     public Result login(int id,String password) {
