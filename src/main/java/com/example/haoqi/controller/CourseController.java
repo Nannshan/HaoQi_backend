@@ -3,8 +3,10 @@ package com.example.haoqi.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.haoqi.entity.Course;
+import com.example.haoqi.entity.Teacher;
 import com.example.haoqi.mapper.CourseMapper;
 import com.example.haoqi.mapper.Signmapper;
+import com.example.haoqi.mapper.TeacherMapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ public class CourseController {
     private CourseMapper courseMapper;
     @Autowired
     private Signmapper signmapper;
+    @Autowired
+    private TeacherMapper teacherMapper;
 
     //添加课程
     //更新课程
@@ -41,11 +45,13 @@ public class CourseController {
         Page<Course> coursePage = new Page<>(page, pageSize);
 
         if (courseName != null) {
-            System.out.println(courseName);
             queryWrapper.like("name", courseName);
             courseMapper.selectPage(coursePage, queryWrapper);
         }else{
             courseMapper.selectPage(coursePage, queryWrapper);
+        }
+        for(Course c : coursePage.getRecords()){
+            c.setTeacherName(teacherMapper.selectById(c.getTeacherid()).getName());
         }
         return Result.ok().data(coursePage);
     }
