@@ -18,6 +18,9 @@ public class Sign {
     private int evaluated;
     private int signed;
 
+    @TableField(exist = false)
+    private int price;
+
     @Override
     public String toString() {
         return "Sign{" +
@@ -94,5 +97,13 @@ public class Sign {
 
     public void setSigned(int signed) {
         this.signed = signed;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

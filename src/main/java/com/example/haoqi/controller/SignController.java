@@ -4,6 +4,7 @@ import com.example.haoqi.entity.Sign;
 import com.example.haoqi.mapper.Signmapper;
 import com.example.haoqi.utils.Result;
 import io.swagger.models.auth.In;
+import org.hamcrest.core.IsNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,17 @@ public class SignController {
     public Result query(Integer id){
         Sign result = signMapper.queryDetail(id);
         return Result.ok().data(result);
-
     }
+    @GetMapping("/queryById")
+    public Result queryById(Integer studentId, Integer courseId){
+        Sign result = signMapper.queryById(studentId, courseId);
+        if(result !=null){
+            return Result.ok().data(result);
+        }else{
+            return Result.error().setMessage("信息错误");
+        }
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody Sign sign){
         System.out.println(sign);
