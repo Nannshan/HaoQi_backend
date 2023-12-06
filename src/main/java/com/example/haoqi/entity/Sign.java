@@ -15,17 +15,22 @@ public class Sign {
     private String studentName;
     private int studentid;
     private int paid;
+    private int evaluated;
+    private int signed;
 
     @Override
     public String toString() {
         return "Sign{" +
                 "id=" + id +
                 ", courseid=" + courseid +
+                ", courseName='" + courseName + '\'' +
+                ", studentName='" + studentName + '\'' +
                 ", studentid=" + studentid +
                 ", paid=" + paid +
+                ", evaluated=" + evaluated +
+                ", signed=" + signed +
                 '}';
     }
-
 
     public int getPaid() {
         return paid;
@@ -73,5 +78,21 @@ public class Sign {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public int getEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(int evaluated) {
+        this.evaluated = evaluated;
+    }
+
+    public int getSigned() {
+        return signed;
+    }
+
+    public void setSigned(int signed) {
+        this.signed = signed;
     }
 }

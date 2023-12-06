@@ -10,12 +10,14 @@ import java.util.List;
 
 @Mapper
 public interface Signmapper extends BaseMapper<Sign> {
-    @Update("UPDATE sign SET paid=1 WHERE id = #{id}")
-    public int updateSign(int id);
-    @Select("SELECT * FROM sign")
-    List<Sign> select();
+    @Select("select sign.*, course.name as coursename, student.name as studentname from sign, course, student" +
+            " where sign.studentid = student.id and sign.courseid = course.id" +
+            " and course.name like CONCAT('%', #{courseName}, '%');")
+    List<Sign> query(String courseName);
 
-    @Select("select sign.*, course.name as coursename, student.name as studentname from sign, course, student where sign.studentid = student.id and sign.courseid = course.id;")
-    List<Sign> query();
+    @Select("select sign.*, course.name as coursename, student.name as studentname from sign, course, student" +
+            " where sign.studentid = student.id and sign.courseid = course.id" +
+            " and sign.id = #{id}")
+    Sign queryDetail(Integer id);
 }
 

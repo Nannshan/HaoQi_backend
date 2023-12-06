@@ -19,8 +19,9 @@ public class QuestionnaireController {
 
     //添加问卷
     @PostMapping("/add")
-    public Result addQuestionnaire(Questionnaire qe,Integer usesrid){
+    public Result addQuestionnaire(@RequestBody Questionnaire qe){
         try{
+            questionnaireMapper.insert(qe);
             return Result.ok().setMessage("提交成功");
         }
         catch (Exception e){
@@ -45,19 +46,26 @@ public class QuestionnaireController {
     *  课程名
     */
     @GetMapping("/query")
-    public Result searchTeacher(String coursename){
-        coursename = ""; //无条件查询所有课程
-        QueryWrapper<Questionnaire> queryWrapper = new QueryWrapper();
-        if(!coursename.equals("")){
-        queryWrapper.like("coursename",coursename);}
-
+    public Result query(String courseName){
         try {
-            List<Questionnaire> questionnaires = questionnaireMapper.selectList(queryWrapper);
+            List<Questionnaire> questionnaires = questionnaireMapper.query(courseName);
             return Result.ok().data(questionnaires);
         }catch (Exception e){
             System.out.println(e);
             return Result.error().setMessage( "参数错误");
         }
     }
+
+    @GetMapping("/queryDetail")
+    public Result queryDetail(Integer id){
+        try {
+            List<Questionnaire> questionnaires = questionnaireMapper.queryDetail(id);
+            return Result.ok().data(questionnaires);
+        }catch (Exception e){
+            System.out.println(e);
+            return Result.error().setMessage( "参数错误");
+        }
+    }
+
 
 }

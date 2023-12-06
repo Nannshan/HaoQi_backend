@@ -3,11 +3,9 @@ package com.example.haoqi.controller;
 import com.example.haoqi.entity.Sign;
 import com.example.haoqi.mapper.Signmapper;
 import com.example.haoqi.utils.Result;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,29 +13,49 @@ import java.util.List;
 @RequestMapping("/sign")
 public class SignController {
     @Autowired
-    private Signmapper signmapper;
-    @GetMapping("/searchsign")
-    public Result searchSign(){
-
-        try {
-            List<Sign> signs = signmapper.select();
-            return Result.ok().data(signs);
-        }catch (Exception e){
-            System.out.println(e);
-            return Result.error().setMessage("参数错误");
-        }
-    }
-
+    private Signmapper signMapper;
     @GetMapping("/query")
-    public Result query(){
-        List<Sign> result = signmapper.query();
+    public Result query(String courseName){
+        List<Sign> result = signMapper.query(courseName);
         return Result.ok().data(result);
 
     }
 
+    @GetMapping("/queryDetail")
+    public Result query(Integer id){
+        Sign result = signMapper.queryDetail(id);
+        return Result.ok().data(result);
+
+    }
+    @PostMapping("/add")
+    public Result add(@RequestBody Sign sign){
+        System.out.println(sign);
+        try{
+            signMapper.insert(sign);
+            return Result.ok().setMessage("新增成功");
+        }catch (Exception e){
+            System.out.println(e);
+            return Result.error().setMessage("新增失败");
+        }
+    }
+
     @PostMapping("/update")
-    public int updateTeacher(int id) {
-        int rows = signmapper.updateSign(id);
-        return rows;
+    public Result update(@RequestBody Sign sign){
+        try {
+        signMapper.updateById(sign);
+            return Result.ok().setMessage("更新成功");
+        }catch (Exception e){
+            return Result.error().setMessage("更新失败");
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public Result delete(Integer id){
+        try{
+            signMapper.deleteById(id);
+            return Result.ok().setMessage("删除成功");
+        }catch (Exception e){
+            return Result.error().setMessage("删除失败");
+        }
     }
 }
