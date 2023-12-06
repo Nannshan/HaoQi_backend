@@ -1,29 +1,34 @@
 package com.example.haoqi.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.models.auth.In;
 
 @TableName("questionnaire")
 public class Questionnaire {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Integer executorid;//执行人id
     private Integer studentid;//学生id
+
+    private Integer courseid;
     private Integer rating;
+    @TableField(exist = false)
     private String coursename;
+    @TableField(exist = false)
+    private String studentname;
     private String suggestion;
 
-    @Override
-    public String toString() {
-        return "questionnaire{" +
-                "id=" + id +
-                ", executorid=" + executorid +
-                ", studentid=" + studentid +
-                ", rating=" + rating +
-                ", coursename='" + coursename + '\'' +
-                ", suggestion='" + suggestion + '\'' +
-                '}';
+
+    public Questionnaire(Integer id, Integer studentid, Integer courseid, Integer rating, String coursename, String studentname, String suggestion) {
+        this.id = id;
+        this.studentid = studentid;
+        this.courseid = courseid;
+        this.rating = rating;
+        this.coursename = coursename;
+        this.studentname = studentname;
+        this.suggestion = suggestion;
     }
 
     public Integer getId() {
@@ -32,14 +37,6 @@ public class Questionnaire {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getExecutorid() {
-        return executorid;
-    }
-
-    public void setExecutorid(Integer executorid) {
-        this.executorid = executorid;
     }
 
     public Integer getStudentid() {
@@ -74,13 +71,19 @@ public class Questionnaire {
         this.suggestion = suggestion;
     }
 
-    public Questionnaire(Integer id, Integer executorid, Integer studentid, Integer rating, String coursename, String suggestion) {
-        this.id = id;
-        this.executorid = executorid;
-        this.studentid = studentid;
-        this.rating = rating;
-        this.coursename = coursename;
-        this.suggestion = suggestion;
+    public String getStudentname() {
+        return studentname;
     }
 
+    public void setStudentname(String studentname) {
+        this.studentname = studentname;
+    }
+
+    public Integer getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Integer courseid) {
+        this.courseid = courseid;
+    }
 }
