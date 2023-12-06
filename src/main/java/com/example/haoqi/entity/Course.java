@@ -14,8 +14,9 @@ public class Course {
     private String courseinfo;
     private Float price;
     private Integer teacherid;
+    private Integer executorid;
 
-    public Course(Integer id, String name, Date date, String position, String courseinfo, Float price,  Integer teacherid) {
+    public Course(Integer id, String name, Date date, String position, String courseinfo, Float price,  Integer teacherid, Integer executorid) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -23,6 +24,7 @@ public class Course {
         this.courseinfo = courseinfo;
         this.price = price;
         this.teacherid = teacherid;
+        this.executorid = executorid;
     }
     public Course () {
     }
@@ -104,5 +106,13 @@ public class Course {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Integer getExecutorid() {
+        return executorid;
+    }
+
+    public void setExecutorid(Integer executorid) {
+        this.executorid = executorid;
     }
 }

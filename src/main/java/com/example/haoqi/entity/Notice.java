@@ -11,12 +11,14 @@ public class Notice {
     private Integer courseid;
     private Date date;
     private String content;
+    private Integer executorid;
 
-    public Notice(Integer id, Integer courseid, Date date, String content) {
+    public Notice(Integer id, Integer courseid, Date date, String content, Integer executorid) {
         this.id = id;
         this.courseid = courseid;
         this.date = date;
         this.content = content;
+        this.executorid = executorid;
     }
 
     public Notice() {
@@ -67,4 +69,11 @@ public class Notice {
         this.id = id;
     }
 
+    public Integer getExecutorid() {
+        return executorid;
+    }
+
+    public void setExecutorid(Integer executorid) {
+        this.executorid = executorid;
+    }
 }

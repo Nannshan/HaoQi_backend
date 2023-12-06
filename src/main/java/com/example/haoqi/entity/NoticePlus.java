@@ -7,8 +7,8 @@ public class NoticePlus extends Notice{
     private String position;
     private Double price;
 
-    public NoticePlus(Integer id, Integer courseid, Date date, String content, String coursename, String position, Double price) {
-        super(id, courseid, date, content);
+    public NoticePlus(Integer id, Integer courseid, Date date, String content, String coursename, String position, Double price, Integer executorid) {
+        super(id, courseid, date, content, executorid);
         this.coursename = coursename;
         this.position = position;
         this.price = price;

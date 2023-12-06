@@ -17,7 +17,9 @@ public class Application {
     private Double price;
     private Integer flag = 0;
 
-    public Application(Integer id, String phone, String coursename, String companyname, String position, Double price, Integer flag) {
+    private Integer executorid;
+
+    public Application(Integer id, String phone, String coursename, String companyname, String position, Double price, Integer flag, Integer executorid) {
         this.id = id;
         this.phone = phone;
         this.coursename = coursename;
@@ -25,6 +27,7 @@ public class Application {
         this.position = position;
         this.price = price;
         this.flag = flag;
+        this.executorid = executorid;
     }
 
     public Integer getId() {
@@ -94,5 +97,13 @@ public class Application {
                 ", price=" + price +
                 ", flag=" + flag +
                 '}';
+    }
+
+    public Integer getExecutorid() {
+        return executorid;
+    }
+
+    public void setExecutorid(Integer executorid) {
+        this.executorid = executorid;
     }
 }
