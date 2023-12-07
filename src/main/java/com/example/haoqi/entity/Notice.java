@@ -23,6 +23,7 @@ public class Notice {
 
     public Notice() {
     }
+
     @Override
     public String toString() {
         return "Notice{" +
@@ -30,6 +31,7 @@ public class Notice {
                 ", courseid=" + courseid +
                 ", date=" + date +
                 ", content='" + content + '\'' +
+                ", executorid=" + executorid +
                 '}';
     }
 

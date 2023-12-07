@@ -7,24 +7,13 @@ public class NoticePlus extends Notice{
     private String position;
     private Double price;
 
-    public NoticePlus(Integer id, Integer courseid, Date date, String content, String coursename, String position, Double price, Integer executorid) {
-        super(id, courseid, date, content, executorid);
-        this.coursename = coursename;
-        this.position = position;
-        this.price = price;
-    }
-
-    public NoticePlus(String coursename, String position, Double price) {
-        this.coursename = coursename;
-        this.position = position;
-        this.price = price;
-    }
-
-    public NoticePlus(Integer id, String coursename, String position, Double price) {
-        super(id);
-        this.coursename = coursename;
-        this.position = position;
-        this.price = price;
+    @Override
+    public String toString() {
+        return "NoticePlus{" +
+                "coursename='" + coursename + '\'' +
+                ", position='" + position + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public String getCoursename() {
@@ -51,12 +40,23 @@ public class NoticePlus extends Notice{
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "NoticePlus{" +
-                "coursename='" + coursename + '\'' +
-                ", position='" + position + '\'' +
-                ", price=" + price +
-                '}';
+    public NoticePlus(Integer id, Integer courseid, Date date, String content, Integer executorid, String coursename, String position, Double price) {
+        super(id, courseid, date, content, executorid);
+        this.coursename = coursename;
+        this.position = position;
+        this.price = price;
+    }
+
+    public NoticePlus(String coursename, String position, Double price) {
+        this.coursename = coursename;
+        this.position = position;
+        this.price = price;
+    }
+
+    public NoticePlus(Integer id, String coursename, String position, Double price) {
+        super(id);
+        this.coursename = coursename;
+        this.position = position;
+        this.price = price;
     }
 }
