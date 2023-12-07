@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.models.auth.In;
 
 @TableName("student")
 public class Student {
@@ -15,6 +16,8 @@ public class Student {
     private String phone;
     private String position;
     private String level;
+
+    private Integer role;
     @TableField(select = false)
     private String password;
 
@@ -80,6 +83,14 @@ public class Student {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     @Override

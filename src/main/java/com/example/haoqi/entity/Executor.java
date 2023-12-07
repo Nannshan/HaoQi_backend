@@ -35,7 +35,7 @@ public class Executor {
     @TableField(select = false)
     private String password;
 
-    private boolean role;
+    private Integer role;
 
     @Override
     public String toString() {
@@ -47,11 +47,11 @@ public class Executor {
                 '}';
     }
 
-    public boolean isRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(boolean role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 }

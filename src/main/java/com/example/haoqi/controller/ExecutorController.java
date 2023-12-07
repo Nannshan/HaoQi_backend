@@ -1,7 +1,6 @@
 package com.example.haoqi.controller;
 
 import com.example.haoqi.mapper.ExecutorMapper;
-import com.example.haoqi.mapper.StudentMapper;
 import com.example.haoqi.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
