@@ -54,8 +54,9 @@ public class NoticeController {
     //条件查询
     @GetMapping("/queryPage")
     public Result searchTeacher(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pageSize, String courseName) {
+        System.out.println(courseName);
         Page<NoticePlus> NoticePage = new Page<>(page, pageSize);
-        if (courseName!=null) {
+        if (!"".equals(courseName)) {
             NoticePage.setRecords(noticeMapper.queryPagebyName(courseName));
         }
         else{
